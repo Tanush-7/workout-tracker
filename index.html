@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Workout Tracker</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <div class="container">
-    <h1>Workout Tracker</h1>
-    <form id="workout-form">
-      <input type="text" id="type" placeholder="Workout Type (e.g., Deadlift)" required />
-      <input type="date" id="date" required />
-      <input type="number" id="duration" placeholder="Duration (minutes)" required />
-      <input type="number" id="weight" placeholder="Weight lifted (kg)" required />
-      <textarea id="notes" placeholder="Notes (optional)"></textarea>
-      <button type="submit">Add Workout</button>
-    </form>
+<!-- Firebase SDK -->
+<script type="module">
+  // Your Firebase config (replace with your own)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-    <h2>Workout History</h2>
-    <ul id="workout-list"></ul>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+  };
 
-    <h2>Weekly Summary</h2>
-    <canvas id="weeklyChart" width="400" height="200"></canvas>
-  </div>
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-  <script src="script.js"></script>
-</body>
-</html>
+  // Make Firestore accessible to your script.js
+  window.db = db;
+  window.firestoreFunctions = { collection, addDoc, getDocs, deleteDoc, doc };
+</script>
