@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workout Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Workout Tracker</h1>
+    <form id="workout-form">
+      <input type="text" id="type" placeholder="Workout Type (e.g., Deadlift)" required />
+      <input type="date" id="date" required />
+      <input type="number" id="duration" placeholder="Duration (minutes)" required />
+      <input type="number" id="weight" placeholder="Weight lifted (kg)" required />
+      <textarea id="notes" placeholder="Notes (optional)"></textarea>
+      <button type="submit">Add Workout</button>
+    </form>
+
+    <h2>Workout History</h2>
+    <ul id="workout-list"></ul>
+
+    <h2>Weekly Summary</h2>
+    <canvas id="weeklyChart" width="400" height="200"></canvas>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
